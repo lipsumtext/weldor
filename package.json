@@ -9,10 +9,12 @@
     "type": "git",
     "url": "git+https://github.com/lipsumtext/weldor"
   },
-
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "mocha": "^10.7.3"
   }
-  
 }
