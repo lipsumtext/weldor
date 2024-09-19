@@ -1,0 +1,18 @@
+{
+  "name": "weldor",
+  "version": "0.0.1",
+  "description": "Wordle with a twist.",
+  "keywords": [],
+  "author": "lipsumtext",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lipsumtext/weldor"
+  },
+
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+  
+}
