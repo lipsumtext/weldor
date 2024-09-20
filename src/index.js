@@ -1,4 +1,4 @@
-var checkWord = require('check-if-word')
+var checkWord = require('check-word')
 words = checkWord('en')
 
 const checkIfWord = function (word) {
