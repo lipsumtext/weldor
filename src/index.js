@@ -26,9 +26,8 @@ const returnColor = (word, wordSet) => {
             )
         }
         return result
-    } else {
-        return false
-    }
+    } 
+    return false
 }
 
 module.exports = { checkIfWord, returnColor }
