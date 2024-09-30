@@ -12,9 +12,8 @@ const returnColor = (word, wordSet, length) => {
         let result = '' // Green = G, Yellow = Y, Red = R
         let charCounter = (w) => {
             let count = {}
-            for (let c of w) {
+            for (let c of w) 
                 count[c] = (count[c] || 0) + 1
-            }
             return count
         }
         let wordCharCount = charCounter(word), 
@@ -35,12 +34,12 @@ const rl = require('readline-sync')
 const gameLoop = () => {
     let count = 0, requiredLength = 6, winConditionMet = false
     let resultColors = [], correctWords = []
-    while (count < 6) {
+    while (count < 10) {
         if (correctWords.length == 3) {
             winConditionMet = true
             break
         }
-        console.log(resultColors)
+        resultColors.forEach(color => console.log(color))
         let answer = rl.question('Please enter a six-letter word: ')
         if (!(correctWords.includes(answer))) {
             let result = returnColor(answer, anagramSet['sixLetterSet'][0], requiredLength)
@@ -53,7 +52,7 @@ const gameLoop = () => {
             count++
         }
     }
-    console.log(resultColors)
+    resultColors.forEach(color => console.log(color))
     console.log(winConditionMet ? 'You win!' : 'You\'re out of attempts. Sorry :(')
 }
 
