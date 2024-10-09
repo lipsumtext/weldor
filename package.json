@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "check-word": "^1.1.0",
+    "fix-esm": "^1.0.1",
     "readline-sync": "^1.4.10",
     "sinon": "^19.0.2"
   }
