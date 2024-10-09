@@ -58,4 +58,4 @@ const gameLoop = () => {
 
 //gameLoop()
 
-module.exports = { checkIfWord, returnColor }
+module.exports = { checkIfWord, returnColor, gameLoop }
