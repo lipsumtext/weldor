@@ -56,6 +56,6 @@ const gameLoop = () => {
     console.log(winConditionMet ? 'You win!' : 'You\'re out of attempts. Sorry :(')
 }
 
-//gameLoop()
+gameLoop()
 
 module.exports = { checkIfWord, returnColor, gameLoop }
