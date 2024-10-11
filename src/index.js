@@ -56,6 +56,6 @@ const gameLoop = () => {
     console.log(winConditionMet ? 'You win!' : 'You\'re out of attempts. Sorry :(')
 }
 
-gameLoop()
+(require.main === module) ? gameLoop() : {}   // Run only when 'node index.js' is invoked
 
 module.exports = { checkIfWord, returnColor, gameLoop }
