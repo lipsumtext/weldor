@@ -11,16 +11,24 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "devDependencies": {
     "chai": "^5.1.1",
     "mocha": "^10.7.3"
   },
   "dependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
     "check-word": "^1.1.0",
     "fix-esm": "^1.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "readline-sync": "^1.4.10",
-    "sinon": "^19.0.2"
+    "sinon": "^19.0.2",
+    "vite": "^5.4.11"
   }
 }
