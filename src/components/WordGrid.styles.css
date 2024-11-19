@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    gap: 2.5px;
+    margin: 2.5px;
+}
+
+.letter-box {
+    width: 48px;
+    height: 48px;
+    border-color: black;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    pointer-events: none;
+    user-select: none;
+}
+
+.valid {
+    background-color: lightgreen;
+}
+
+.invalid {
+    background-color: lightcoral;
+}
+
+.ambiguous {
+    background-color: yellow;
+}
