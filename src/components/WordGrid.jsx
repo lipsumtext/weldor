@@ -2,19 +2,15 @@ import { useEffect } from "react"
 import { useWeldor } from "../hooks/useWeldor"
 import './WordGrid.styles.css'
 
-const Row = ({ word, boxStatus, isActive }) => {
+const Row = ({ word, boxStatus }) => {
     return (
-        <>
-            {isActive && 
-                <div className="container">
-                    {Array.from({ length: 6 }, (_, i) => (
-                        <div key={i} className={boxStatus[i] || 'letter-box'}>
-                            {word[i] || ''}
-                        </div>
-                    ))}
+        <div className="container">
+            {Array.from({ length: 6 }, (_, i) => (
+                <div key={i} className={boxStatus[i] || 'letter-box'}>
+                    {word[i] || ''}
                 </div>
-            }
-        </>
+            ))}
+        </div>
     )
 }
 
@@ -29,7 +25,9 @@ export const WordGrid = () => {
     
     return (
         <>
-            <Row word={guessedWord.toUpperCase()} boxStatus={boxStatus} isActive={true}/>
+            {Array.from({ length: 10 }, () => (
+                <Row word={guessedWord.toUpperCase()} boxStatus={boxStatus}/>
+            ))}
             <div>{guessedWord}</div>
         </>
     )
