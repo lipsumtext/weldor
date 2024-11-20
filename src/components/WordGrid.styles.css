@@ -2,13 +2,15 @@
     display: flex;
     gap: 2.5px;
     margin: 2.5px;
+    overflow: auto;
 }
 
 .letter-box {
     width: 48px;
     height: 48px;
-    border-color: black;
+    border-color: gray;
     border-style: solid;
+    border-width: 2px;
     display: flex;
     justify-content: center;
     align-items: center;

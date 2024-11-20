@@ -1,5 +1,5 @@
 import { useState } from "react"
-import anagramSet from '../../src/data/anagram_set.json'
+import anagramSet from '../../src/data/anagramSet.json'
 import { useWordChecker } from 'react-word-checker'
 
 export const useWeldor = () => {
