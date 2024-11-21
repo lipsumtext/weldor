@@ -22,7 +22,7 @@ describe('#gameLoop()', () => {
         questionStub.onCall(1).returns('recant')
         questionStub.onCall(2).returns('trance')
 
-        gameLoop()
+        gameLoop(true)
 
         expect(consoleLogStub.calledWith('You win!')).to.be.true
     })
