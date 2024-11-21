@@ -18,6 +18,18 @@ const getAnagramSet = (length, timestamp=-1) => {
     isaac.prng(10)
     let random_number = Math.abs(isaac.rand())
 
+    // Safety: Check if previous day is the same.
+    // If so, run PRNG for longer.
+    isaac.seed(Math.abs(unixdate-86400000))
+    isaac.prng(10)
+    let random_number_2 = Math.abs(isaac.rand())
+
+    if (random_number == random_number_2){
+        isaac.seed(unixdate)
+        isaac.prng(20)
+        random_number = Math.abs(isaac.rand())
+    }
+
     const anagramFile = require('./anagram_sets/'+length+'.json')
     // Condition checking.
     let index = random_number % anagramFile["total"]
@@ -49,10 +61,12 @@ const returnColor = (word, wordSet, length) => {
 
 const rl = require('readline-sync')
 
-const gameLoop = () => {
+const gameLoop = (debug=false) => {
     let count = 0, requiredLength = 6, winConditionMet = false
     let resultColors = [], correctWords = []
     let anagramSet = getAnagramSet(6)
+    if (debug==true) anagramSet = getAnagramSet(6,86400000*87)
+
     while (count < 10) {
         if (correctWords.length == 3) {
             winConditionMet = true
