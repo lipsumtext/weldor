@@ -7,6 +7,26 @@ const checkIfWord = (word) => {
     return words.check(word)
 }
 
+const isaac = require( 'isaac')
+
+const getAnagramSet = (length, timestamp=-1) => {
+    // Set the days since Unix epoch to use for randomization.
+    // Use either current time, or a given timestamp.
+    let unixdate = timestamp
+    if (unixdate == -1) unixdate = new Date()
+    unixdate = Math.floor(unixdate/(8.64e7))
+
+    isaac.seed(576460752303423487 + unixdate)
+    isaac.prng(10)
+    let random_number = isaac.rand()
+
+    const anagramFile = require('./anagram_sets/'+length+'.json')
+    // Condition checking.
+    let index = random_number % anagramFile["total"]
+    let result = anagramFile["anagrams"][index]
+    return result
+}
+
 const returnColor = (word, wordSet, length) => {
     if (checkIfWord(word) && word.length == length) {
         let result = '' // Green = G, Yellow = Y, Red = R
@@ -58,4 +78,4 @@ const gameLoop = () => {
 
 (require.main === module) ? gameLoop() : {}   // Run only when 'node index.js' is invoked
 
-module.exports = { checkIfWord, returnColor, gameLoop }
+module.exports = { checkIfWord, returnColor, gameLoop, getAnagramSet }
