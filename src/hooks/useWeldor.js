@@ -5,6 +5,10 @@ import { useWordChecker } from 'react-word-checker'
 export const useWeldor = () => {
     const [guessedWord, setGuessedWord] = useState('')
     const [boxStatus, setBoxStatus] = useState([...Array.from({ length: 6 }, () => '')])
+    const [boxStatusSet, setBoxStatusSet] = useState([...Array.from({ length: 10 }, () => 
+                                                        [...Array.from({ length: 6 }, () => '')]
+                                                    )])
+    const [activeBoxKey, setActiveBoxKey] = useState(0)
     const [result, setResult] = useState('')
     const { wordExists } = useWordChecker('en')
 
@@ -36,7 +40,12 @@ export const useWeldor = () => {
             )
         }
         let mapped = mapBoxStatus(result)
-        setBoxStatus(mapped)
+        setBoxStatusSet((prev) => {
+            const newBoxStatusSet = [...prev]
+            newBoxStatusSet[activeBoxKey] = mapped
+            return newBoxStatusSet
+        })
+        setActiveBoxKey(activeBoxKey + 1)
         return result
     }
 
@@ -55,5 +64,5 @@ export const useWeldor = () => {
         } 
     }
 
-    return { result, guessedWord, boxStatus, handleUserInput }
+    return { result, guessedWord, boxStatus, boxStatusSet, activeBoxKey, handleUserInput }
 }
