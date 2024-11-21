@@ -1,8 +1,6 @@
 const checkWord = require('check-word')
 const words = checkWord('en')
 
-const anagramSet = require('./anagram_set.json')
-
 const checkIfWord = (word) => {
     return words.check(word)
 }
@@ -14,11 +12,11 @@ const getAnagramSet = (length, timestamp=-1) => {
     // Use either current time, or a given timestamp.
     let unixdate = timestamp
     if (unixdate == -1) unixdate = new Date()
-    unixdate = Math.floor(unixdate/(8.64e7))
+    unixdate = 536870911 + Math.floor(unixdate/(8.64e7))
 
-    isaac.seed(576460752303423487 + unixdate)
+    isaac.seed(unixdate)
     isaac.prng(10)
-    let random_number = isaac.rand()
+    let random_number = Math.abs(isaac.rand())
 
     const anagramFile = require('./anagram_sets/'+length+'.json')
     // Condition checking.
@@ -54,6 +52,7 @@ const rl = require('readline-sync')
 const gameLoop = () => {
     let count = 0, requiredLength = 6, winConditionMet = false
     let resultColors = [], correctWords = []
+    let anagramSet = getAnagramSet(6)
     while (count < 10) {
         if (correctWords.length == 3) {
             winConditionMet = true
@@ -62,7 +61,7 @@ const gameLoop = () => {
         resultColors.forEach(color => console.log(color))
         let answer = rl.question('Please enter a six-letter word: ')
         if (!(correctWords.includes(answer))) {
-            let result = returnColor(answer, anagramSet['sixLetterSet'][0], requiredLength)
+            let result = returnColor(answer, anagramSet, requiredLength)
             if (!result) {
                 continue
             } else if (result == ('G'.repeat(requiredLength))) {
