@@ -57,15 +57,19 @@ export const useWeldor = () => {
         if (key === 'Backspace') {
             setGuessedWord((prev) => prev.slice(0, -1))
         } else if (key === 'Enter') {
-            if (guessedWord.length == 6) {
+            if (guessedWord.length == 6 && !guessedWordSet.includes(guessedWord.toUpperCase())) 
                 returnColor(guessedWord, anagramSet['sixLetterSet'][0])
-            }
         } else if (/^[a-zA-Z]$/.test(key)) {
-            if (guessedWord.length < 6) {
+            if (guessedWord.length < 6) 
                 setGuessedWord((prev) => prev + key)
-            }
         } 
     }
 
-    return { guessedWord, guessedWordSet, boxStatusSet, activeBoxKey, handleUserInput }
+    return { 
+        guessedWord, 
+        guessedWordSet, 
+        boxStatusSet, 
+        activeBoxKey, 
+        handleUserInput 
+    }
 }
