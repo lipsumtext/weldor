@@ -61,7 +61,7 @@ export const useWeldor = () => {
                 returnColor(guessedWord, anagramSet['sixLetterSet'][0])
         } else if (/^[a-zA-Z]$/.test(key)) {
             if (guessedWord.length < 6) 
-                setGuessedWord((prev) => prev + key)
+                setGuessedWord((prev) => prev + key.toLowerCase())
         } 
     }
 
