@@ -4,12 +4,11 @@ import { useWordChecker } from 'react-word-checker'
 
 export const useWeldor = () => {
     const [guessedWord, setGuessedWord] = useState('')
-    const [boxStatus, setBoxStatus] = useState([...Array.from({ length: 6 }, () => '')])
+    const [guessedWordSet, setGuessedWordSet] = useState([...Array.from({ length: 10 }, () => '')])
     const [boxStatusSet, setBoxStatusSet] = useState([...Array.from({ length: 10 }, () => 
                                                         [...Array.from({ length: 6 }, () => '')]
                                                     )])
     const [activeBoxKey, setActiveBoxKey] = useState(0)
-    const [result, setResult] = useState('')
     const { wordExists } = useWordChecker('en')
 
     const mapBoxStatus = (result = []) => {
@@ -39,13 +38,18 @@ export const useWeldor = () => {
                 : 'R'
             )
         }
-        let mapped = mapBoxStatus(result)
+        setGuessedWordSet((prev) => {
+            const newGuessedWordSet = [...prev]
+            newGuessedWordSet[activeBoxKey] = guessedWord.toUpperCase()
+            return newGuessedWordSet
+        })
         setBoxStatusSet((prev) => {
             const newBoxStatusSet = [...prev]
-            newBoxStatusSet[activeBoxKey] = mapped
+            newBoxStatusSet[activeBoxKey] = mapBoxStatus(result)
             return newBoxStatusSet
         })
         setActiveBoxKey(activeBoxKey + 1)
+        setGuessedWord('')
         return result
     }
 
@@ -54,15 +58,14 @@ export const useWeldor = () => {
             setGuessedWord((prev) => prev.slice(0, -1))
         } else if (key === 'Enter') {
             if (guessedWord.length == 6) {
-                console.log('entered')
-                setResult(() => returnColor(guessedWord, anagramSet['sixLetterSet'][0]))
+                returnColor(guessedWord, anagramSet['sixLetterSet'][0])
             }
         } else if (/^[a-zA-Z]$/.test(key)) {
             if (guessedWord.length < 6) {
-                setGuessedWord((prev) => prev + key.toLowerCase())
+                setGuessedWord((prev) => prev + key)
             }
         } 
     }
 
-    return { result, guessedWord, boxStatus, boxStatusSet, activeBoxKey, handleUserInput }
+    return { guessedWord, guessedWordSet, boxStatusSet, activeBoxKey, handleUserInput }
 }

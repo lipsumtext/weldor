@@ -2,12 +2,12 @@ import { useEffect } from "react"
 import { useWeldor } from "../hooks/useWeldor"
 import './WordGrid.styles.css'
 
-const Row = ({ word, boxStatus, isActive }) => {
+const Row = ({ word, savedWord, boxStatus, isActive }) => {
     return (
         <div className="container">
             {Array.from({ length: 6 }, (_, i) => (
                 <div key={i} className={boxStatus[i] || 'letter-box'}>
-                    {word[i] || ''}
+                    { isActive ? word[i] || '' : savedWord[i]}
                 </div>
             ))}
         </div>
@@ -15,7 +15,13 @@ const Row = ({ word, boxStatus, isActive }) => {
 }
 
 export const WordGrid = () => {
-    const { guessedWord, boxStatus, boxStatusSet, activeBoxKey, handleUserInput } = useWeldor()
+    const { 
+        guessedWord, 
+        guessedWordSet, 
+        boxStatusSet, 
+        activeBoxKey, 
+        handleUserInput
+    } = useWeldor()
 
     useEffect(() => {
         window.addEventListener('keyup', handleUserInput)
@@ -26,9 +32,12 @@ export const WordGrid = () => {
     return (
         <>
             {Array.from({ length: 10 }, (_, i) => (
-                <Row word={guessedWord.toUpperCase()} boxStatus={boxStatusSet[i]} isActive={i === activeBoxKey}/>
+                <Row word={guessedWord.toUpperCase()} 
+                    savedWord={guessedWordSet[i]} 
+                    boxStatus={boxStatusSet[i]} 
+                    isActive={i === activeBoxKey}
+                />
             ))}
-            <div>{guessedWord}</div>
         </>
     )
 }
