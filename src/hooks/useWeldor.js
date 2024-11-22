@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import anagramSet from '../../src/data/anagramSet.json'
 import { useWordChecker } from 'react-word-checker'
 
@@ -9,7 +9,16 @@ export const useWeldor = () => {
                                                         [...Array.from({ length: 6 }, () => '')]
                                                     )])
     const [activeBoxKey, setActiveBoxKey] = useState(0)
+    const [validWordCount, setValidWordCount] = useState(0)
+    const [winConditionMet, setWinConditionMet] = useState(false)
     const { wordExists } = useWordChecker('en')
+
+    useEffect(() => {
+        if (validWordCount == 3) {
+            console.log('you win, gg boi')
+            return setWinConditionMet(true)
+        }
+    }, [validWordCount])
 
     const mapBoxStatus = (result = []) => {
         const values = {
@@ -57,8 +66,11 @@ export const useWeldor = () => {
         if (key === 'Backspace') {
             setGuessedWord((prev) => prev.slice(0, -1))
         } else if (key === 'Enter') {
-            if (guessedWord.length == 6 && !guessedWordSet.includes(guessedWord.toUpperCase())) 
-                returnColor(guessedWord, anagramSet['sixLetterSet'][0])
+            if (guessedWord.length == 6 && !guessedWordSet.includes(guessedWord.toUpperCase())) {
+                let result = returnColor(guessedWord, anagramSet['sixLetterSet'][0])
+                if (result === 'G'.repeat(guessedWord.length)) 
+                    setValidWordCount(validWordCount + 1)
+            }
         } else if (/^[a-zA-Z]$/.test(key)) {
             if (guessedWord.length < 6) 
                 setGuessedWord((prev) => prev + key.toLowerCase())
@@ -69,7 +81,8 @@ export const useWeldor = () => {
         guessedWord, 
         guessedWordSet, 
         boxStatusSet, 
-        activeBoxKey, 
+        activeBoxKey,
+        winConditionMet, 
         handleUserInput 
     }
 }
