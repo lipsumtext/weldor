@@ -11,14 +11,18 @@ export const useWeldor = () => {
     const [activeBoxKey, setActiveBoxKey] = useState(0)
     const [validWordCount, setValidWordCount] = useState(0)
     const [winConditionMet, setWinConditionMet] = useState(false)
+    const [loseConditionMet, setLoseConditionMet] = useState(false)
     const { wordExists } = useWordChecker('en')
 
     useEffect(() => {
         if (validWordCount == 3) {
             console.log('you win, gg boi')
             return setWinConditionMet(true)
+        } else if (guessedWordSet[guessedWordSet.length - 1] !== '') {
+            console.log("you're out of guesses, better luck next time :(")
+            return setLoseConditionMet(true)
         }
-    }, [validWordCount])
+    }, [validWordCount, guessedWordSet])
 
     const mapBoxStatus = (result = []) => {
         const values = {
@@ -83,6 +87,7 @@ export const useWeldor = () => {
         boxStatusSet, 
         activeBoxKey,
         winConditionMet, 
+        loseConditionMet,
         handleUserInput 
     }
 }

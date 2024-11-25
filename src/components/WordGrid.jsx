@@ -21,15 +21,16 @@ export const WordGrid = () => {
         boxStatusSet, 
         activeBoxKey, 
         winConditionMet,
+        loseConditionMet,
         handleUserInput
     } = useWeldor()
 
     useEffect(() => {
-        if (!winConditionMet) {
+        if (!winConditionMet && !loseConditionMet) {
             window.addEventListener('keyup', handleUserInput)
             return () => window.removeEventListener('keyup', handleUserInput)
         }
-    }, [handleUserInput, winConditionMet])
+    }, [handleUserInput, winConditionMet, loseConditionMet])
 
     return (
         <>
