@@ -28,6 +28,7 @@
     "isaac": "^0.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-word-checker": "^1.1.1",
     "readline-sync": "^1.4.10",
     "sinon": "^19.0.2",
     "vite": "^5.4.11"

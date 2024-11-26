@@ -1,6 +1,11 @@
+import { WordGrid } from "./components/WordGrid"
+
 function App() {
-    return(
-      <div>Welcome to Weldor</div>
+    return (
+      <>
+        <h1>Weldor</h1>
+        <WordGrid />
+      </>
     )
   }
   
