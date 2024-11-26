@@ -3,6 +3,7 @@
     gap: 2.5px;
     margin: 2.5px;
     overflow: auto;
+    justify-content: center;
 }
 
 .letter-box {
@@ -20,6 +21,21 @@
     user-select: none;
 }
 
+.key-box {
+    width: 36px;
+    height: 48px;
+    border-color: gray;
+    border-style: solid;
+    border-width: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* pointer-events: none; */
+    user-select: none;
+}
+
 .valid {
     background-color: lightgreen;
 }
@@ -30,4 +46,8 @@
 
 .ambiguous {
     background-color: yellow;
+}
+
+.center {
+    text-align: center;
 }
