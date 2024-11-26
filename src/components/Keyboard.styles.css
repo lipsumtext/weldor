@@ -6,8 +6,8 @@
     justify-content: center;
 }
 
-.letter-box {
-    width: 48px;
+.key-box {
+    width: 36px;
     height: 48px;
     border-color: gray;
     border-style: solid;
@@ -17,7 +17,7 @@
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-    pointer-events: none;
+    /* pointer-events: none; */
     user-select: none;
 }
 

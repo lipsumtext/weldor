@@ -4,18 +4,18 @@ import './WordGrid.styles.css'
 
 export const KeyButton = ({i,j,letter,handleUserInput}) => {
     const sendKeypress = (letter) => {
-        let keyy = letter
-        if(keyy == '1')keyy='Backspace'
-        if(keyy == '2')keyy='Enter'
+        let letterEvent = letter
+        if(letterEvent == '1')letterEvent='Backspace'
+        if(letterEvent == '2')letterEvent='Enter'
         // console.log(keyy)
-        handleUserInput({key:keyy})
+        handleUserInput({key:letterEvent})
     }
-    let print = letter
-    if(print == '1')print='⌫' 
-    if(print == '2')print='↵'
+    let letterPrint = letter
+    if(letterPrint == '1')letterPrint='⌫' 
+    if(letterPrint == '2')letterPrint='↵'
     return (
         <div key={'keyboard-row-'+i+'-col-'+j} className='key-box' onClick={()=>{sendKeypress(letter)}}>
-            {print}
+            {letterPrint}
         </div>
     )
 }
