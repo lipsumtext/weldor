@@ -1,13 +1,12 @@
 import { useEffect } from "react"
 import { useWeldor } from "../hooks/useWeldor"
-import './WordGrid.styles.css'
+import './Keyboard.styles.css'
 
 export const KeyButton = ({i,j,letter,handleUserInput}) => {
     const sendKeypress = (letter) => {
         let letterEvent = letter
         if(letterEvent == '1')letterEvent='Backspace'
         if(letterEvent == '2')letterEvent='Enter'
-        // console.log(keyy)
         handleUserInput({key:letterEvent})
     }
     let letterPrint = letter
