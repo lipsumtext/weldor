@@ -1,7 +1,7 @@
 var assert = require('assert')
 
 var index = require('../src/index')
-var anagramSet = require('../src/anagram_set.json')
+var anagramSet = require('../src/data/anagramSet.json')
 
 describe('#returnColor()', function() {
   it('should return a color combination if word is valid', function() {

@@ -14,7 +14,7 @@ const Row = ({ word, savedWord, boxStatus, isActive }) => {
     )
 }
 
-export const WordGrid = () => {
+export const WordGrid = ({weldorInstance}) => {
     const { 
         guessedWord, 
         guessedWordSet, 
@@ -23,7 +23,7 @@ export const WordGrid = () => {
         winConditionMet,
         loseConditionMet,
         handleUserInput
-    } = useWeldor()
+    } = weldorInstance
 
     useEffect(() => {
         if (!winConditionMet && !loseConditionMet) {
