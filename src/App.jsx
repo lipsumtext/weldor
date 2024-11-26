@@ -6,15 +6,13 @@ import { useWeldor } from "./hooks/useWeldor"
 function App() {
     const weldorInstance = useWeldor()
     return (
-      <><div id='app'>
+      <>
         <h1>Weldor</h1>
-        <WordGrid
-        weldorInstance={weldorInstance}
-        />
+        <WordGrid weldorInstance={weldorInstance}/>
         <br></br>
         <br></br>
         <Keyboard weldorInstance={weldorInstance} />
-        </div></>
+      </>
     )
   }
   
