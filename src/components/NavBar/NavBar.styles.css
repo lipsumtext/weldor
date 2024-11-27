@@ -1,5 +1,15 @@
-navbar {
-    display: inline;
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 h1 {
