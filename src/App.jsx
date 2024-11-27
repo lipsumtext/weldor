@@ -4,6 +4,7 @@ import { useWeldor } from "./hooks/useWeldor"
 import { useState } from "react"
 import { createPortal } from "react-dom"
 import { RulesModal } from "./components/RulesModal/RulesModal"
+import { NavBar } from "./components/NavBar/NavBar"
 
 function App() {
     const weldorInstance = useWeldor()
@@ -15,7 +16,7 @@ function App() {
           <RulesModal onClose={() => setShowRules(false)} />,
           document.body
         )}
-        <h1>Weldor</h1>
+        <NavBar />
         <WordGrid weldorInstance={weldorInstance}/>
         <br></br>
         <br></br>
