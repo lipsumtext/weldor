@@ -16,7 +16,7 @@ function App() {
           <RulesModal onClose={() => setShowRules(false)} />,
           document.body
         )}
-        <NavBar />
+        <NavBar setShowRules={setShowRules}/>
         <WordGrid weldorInstance={weldorInstance}/>
         <br></br>
         <br></br>
