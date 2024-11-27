@@ -1,10 +1,9 @@
-import { WordGrid } from "./components/WordGrid"
-import { Keyboard } from "./components/Keyboard"
-import './components/WordGrid.styles.css'
+import { WordGrid } from "./components/WordGrid/WordGrid"
+import { Keyboard } from "./components/Keyboard/Keyboard"
 import { useWeldor } from "./hooks/useWeldor"
 import { useState } from "react"
 import { createPortal } from "react-dom"
-import { RulesModal } from "./components/RulesModal"
+import { RulesModal } from "./components/RulesModal/RulesModal"
 
 function App() {
     const weldorInstance = useWeldor()
@@ -23,6 +22,6 @@ function App() {
         <Keyboard weldorInstance={weldorInstance} />
       </>
     )
-  }
+}
   
-  export default App
+export default App

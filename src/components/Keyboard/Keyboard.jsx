@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useWeldor } from "../hooks/useWeldor"
+import { useWeldor } from "../../hooks/useWeldor"
 import './Keyboard.styles.css'
 
 export const KeyButton = ({i,j,letter,handleUserInput}) => {
