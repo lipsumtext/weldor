@@ -2,7 +2,7 @@ import './RulesModal.styles.css'
 
 export const RulesModal = ({ onClose }) => {
     return (
-        <div className="modal">
+        <div className="rules-modal">
             <div className='title-bar'>
                 <button onClick={onClose}>✖</button>
             </div>
