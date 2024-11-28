@@ -10,12 +10,25 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 360px;
-    height: 640px;
+    width: 380px;
+    height: 660px;
+
+    @media screen and (max-width: 425px) {
+        width: 100vw;
+        height: 100vh;
+    }
 }
 
 .title-bar {
     margin-left: auto;
+}
+
+.how-to-play {
+    overflow: auto;
+
+    h3, h4 {
+        text-align: center;
+    }
 }
 
 .play-weldor {
@@ -24,6 +37,7 @@
 }
 
 p {
-    margin-left: 16px;
-    margin-right: 16px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: .95em;
 }
