@@ -21,16 +21,12 @@
     user-select: none;
 }
 
-.valid {
+.key-valid {
     background-color: lightgreen;
 }
 
-.invalid {
-    background-color: lightcoral;
-}
-
-.ambiguous {
-    background-color: yellow;
+.key-invalid {
+    background-color: grey;
 }
 
 .center {
