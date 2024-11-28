@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useWeldor } from "../hooks/useWeldor"
+import { useWeldor } from "../../hooks/useWeldor"
 import './WordGrid.styles.css'
 
 const Row = ({ word, savedWord, boxStatus, isActive }) => {
