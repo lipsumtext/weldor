@@ -8,6 +8,7 @@ export const useWeldor = () => {
     const [boxStatusSet, setBoxStatusSet] = useState([...Array.from({ length: 10 }, () => 
                                                         [...Array.from({ length: 6 }, () => '')]
                                                     )])
+    const [keyStatusSet, setKeyStatusSet] = useState([...Array.from({ length: 26 }, () => '')])
     const [activeBoxKey, setActiveBoxKey] = useState(0)
     const [validWordCount, setValidWordCount] = useState(0)
     const [winConditionMet, setWinConditionMet] = useState(false)
@@ -29,6 +30,16 @@ export const useWeldor = () => {
             G: 'letter-box valid',
             Y: 'letter-box ambiguous',
             R: 'letter-box invalid'
+        }
+
+        return [...Array.from({ length: 6 }, (_, i) => (values[result[i]] || 'letter-box'))]
+    }
+
+    const mapKeyStatus = (result = []) => {
+        const values = {
+            G: 'key-box key-valid',
+            Y: 'key-box key-valid',
+            R: 'key-box key-invalid'
         }
 
         return [...Array.from({ length: 6 }, (_, i) => (values[result[i]] || 'letter-box'))]
@@ -61,12 +72,25 @@ export const useWeldor = () => {
             newBoxStatusSet[activeBoxKey] = mapBoxStatus(result)
             return newBoxStatusSet
         })
+        setKeyStatusSet((prev)=> {
+            const newKeyStatusSet = [...prev]
+            const valKeyStatusSet =  mapKeyStatus(result)
+            for (let i=0;i<6;i=i+1){
+                let index = word[i].charCodeAt(0)-96
+                if (index<0) index = word[i].charCodeAt(0)-64
+                newKeyStatusSet[index-1]=valKeyStatusSet[i]
+            }
+            return newKeyStatusSet
+        })
         setActiveBoxKey(activeBoxKey + 1)
         setGuessedWord('')
         return result
     }
 
     const handleUserInput = ({ key }) => {
+        if (winConditionMet || loseConditionMet){
+            return
+        }
         if (key === 'Backspace') {
             setGuessedWord((prev) => prev.slice(0, -1))
         } else if (key === 'Enter') {
@@ -88,6 +112,7 @@ export const useWeldor = () => {
         activeBoxKey,
         winConditionMet, 
         loseConditionMet,
+        keyStatusSet,
         handleUserInput 
     }
 }
