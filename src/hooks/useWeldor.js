@@ -13,14 +13,14 @@ export const useWeldor = () => {
     const [validWordCount, setValidWordCount] = useState(0)
     const [winConditionMet, setWinConditionMet] = useState(false)
     const [loseConditionMet, setLoseConditionMet] = useState(false)
+    const [score, setScore] = useState(0)
     const { wordExists } = useWordChecker('en')
 
     useEffect(() => {
         if (validWordCount == 3) {
-            console.log('you win, gg boi')
+            setScore(score + 2)
             return setWinConditionMet(true)
         } else if (guessedWordSet[guessedWordSet.length - 1] !== '') {
-            console.log("you're out of guesses, better luck next time :(")
             return setLoseConditionMet(true)
         }
     }, [validWordCount, guessedWordSet])
@@ -96,8 +96,10 @@ export const useWeldor = () => {
         } else if (key === 'Enter') {
             if (guessedWord.length == 6 && !guessedWordSet.includes(guessedWord.toUpperCase())) {
                 let result = returnColor(guessedWord, anagramSet['sixLetterSet'][0])
-                if (result === 'G'.repeat(guessedWord.length)) 
+                if (result === 'G'.repeat(guessedWord.length)) {
                     setValidWordCount(validWordCount + 1)
+                    setScore(score + 1)
+                }
             }
         } else if (/^[a-zA-Z]$/.test(key)) {
             if (guessedWord.length < 6) 
@@ -113,6 +115,7 @@ export const useWeldor = () => {
         winConditionMet, 
         loseConditionMet,
         keyStatusSet,
+        score,
         handleUserInput 
     }
 }

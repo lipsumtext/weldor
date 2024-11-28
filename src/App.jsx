@@ -21,7 +21,7 @@ function App() {
         {((weldorInstance.winConditionMet || weldorInstance.loseConditionMet) 
           && showResults
         ) && createPortal(
-          <ResultsModal onClose={() => setShowResults(false)}/>,
+          <ResultsModal onClose={() => setShowResults(false)} weldorInstance={weldorInstance}/>,
           document.body
         )}
         <NavBar setShowRules={setShowRules}/>
