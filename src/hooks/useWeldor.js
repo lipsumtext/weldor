@@ -67,6 +67,9 @@ export const useWeldor = () => {
     }
 
     const handleUserInput = ({ key }) => {
+        if (winConditionMet || loseConditionMet){
+            return
+        }
         if (key === 'Backspace') {
             setGuessedWord((prev) => prev.slice(0, -1))
         } else if (key === 'Enter') {
