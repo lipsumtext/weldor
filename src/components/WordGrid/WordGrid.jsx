@@ -20,17 +20,13 @@ export const WordGrid = ({weldorInstance}) => {
         guessedWordSet, 
         boxStatusSet, 
         activeBoxKey, 
-        winConditionMet,
-        loseConditionMet,
         handleUserInput
     } = weldorInstance
 
     useEffect(() => {
-        if (!winConditionMet && !loseConditionMet) {
-            window.addEventListener('keyup', handleUserInput)
-            return () => window.removeEventListener('keyup', handleUserInput)
-        }
-    }, [handleUserInput, winConditionMet, loseConditionMet])
+        window.addEventListener('keyup', handleUserInput)
+        return () => window.removeEventListener('keyup', handleUserInput)
+    }, [handleUserInput])
 
     return (
         <>
