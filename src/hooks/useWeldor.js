@@ -9,6 +9,7 @@ export const useWeldor = () => {
                                                         [...Array.from({ length: 6 }, () => '')]
                                                     )])
     const [keyStatusSet, setKeyStatusSet] = useState([...Array.from({ length: 26 }, () => '')])
+    const [emojified, setEmojified] = useState('')
     const [activeBoxKey, setActiveBoxKey] = useState(0)
     const [validWordCount, setValidWordCount] = useState(0)
     const [winConditionMet, setWinConditionMet] = useState(false)
@@ -45,6 +46,17 @@ export const useWeldor = () => {
         return [...Array.from({ length: 6 }, (_, i) => (values[result[i]] || 'letter-box'))]
     }
 
+    const mapEmoji = (rowStatus) => {
+        const values = {
+            'letter-box valid': '🟩',
+            'letter-box ambiguous': '🟨',
+            'letter-box invalid': '🟥'
+        }
+
+        let emojified = rowStatus.map((boxStatus) => (values[boxStatus]))
+        return emojified.join('') + '\n'
+    }
+
     const returnColor = (word, wordSet) => {
         if (!wordExists(word)) return
         let result = '' // Green = G, Yellow = Y, Red = R
@@ -72,6 +84,7 @@ export const useWeldor = () => {
             newBoxStatusSet[activeBoxKey] = mapBoxStatus(result)
             return newBoxStatusSet
         })
+        setEmojified((prev) => prev + mapEmoji(mapBoxStatus(result)))
         setKeyStatusSet((prev)=> {
             const newKeyStatusSet = [...prev]
             const valKeyStatusSet =  mapKeyStatus(result)
@@ -119,6 +132,7 @@ export const useWeldor = () => {
         keyStatusSet,
         score,
         anagramSetSelected,
+        emojified,
         handleUserInput 
     }
 }

@@ -6,7 +6,8 @@ export const ResultsModal = ({ onClose, weldorInstance }) => {
         loseConditionMet,
         score,
         guessedWordSet,
-        anagramSetSelected
+        anagramSetSelected,
+        emojified,
     } = weldorInstance
 
     const remaining = (wordSet, anagramSet) => {
@@ -21,7 +22,10 @@ export const ResultsModal = ({ onClose, weldorInstance }) => {
             <p>{winConditionMet ? 'You win!' : loseConditionMet ? "You're out of attempts. Sorry :(" : ''}</p>
             <p>Score: {score}</p>
             <p>{score == 0 ? 'Answers:' : 'Other answer(s):'} {remainingWords}</p>
-            <button onClick={onClose}>Close</button>
+            <p style={{whiteSpace: "pre-wrap", pointerEvents: "none", userSelect: "none"}}>{emojified}</p>
+            <div className="close-results">
+                <button onClick={onClose}>Close</button>
+            </div>
         </div>
     )
 }
