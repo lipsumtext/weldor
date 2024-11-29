@@ -1,11 +1,13 @@
 import './ResultsModal.styles.css'
-
+import { TwitterShareButton, XIcon } from 'react-share'
+ 
 export const ResultsModal = ({ onClose, weldorInstance }) => {
     const {
         winConditionMet,
         loseConditionMet,
         score,
         guessedWordSet,
+        activeBoxKey,
         anagramSetSelected,
         emojified,
     } = weldorInstance
@@ -16,6 +18,16 @@ export const ResultsModal = ({ onClose, weldorInstance }) => {
 
     const remainingWords = remaining(guessedWordSet, anagramSetSelected).join(', ')
 
+    const url = 'https://weldor.pages.dev/'
+    const title = ((winConditionMet 
+                        ? "I got today's Weldor daily anagram set within (" + String(activeBoxKey) + '/10) attempts!\n\n'
+                        : "Today's Weldor daily anagram set is a tough one!\n\n"
+                    )
+        + emojified
+        + '\n'
+        + 'Play now: '
+    )
+
     return (
         <div className="results-modal">
             <h1>Results</h1>
@@ -25,6 +37,10 @@ export const ResultsModal = ({ onClose, weldorInstance }) => {
             <p style={{whiteSpace: "pre-wrap", pointerEvents: "none", userSelect: "none"}}>{emojified}</p>
             <div className="close-results">
                 <button onClick={onClose}>Close</button>
+                <TwitterShareButton url={url} title={title}>
+                    <XIcon size={32} round />
+                </TwitterShareButton>
+
             </div>
         </div>
     )
