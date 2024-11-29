@@ -29,19 +29,20 @@ export const ResultsModal = ({ onClose, weldorInstance }) => {
     )
 
     return (
-        <div className="results-modal">
-            <h1>Results</h1>
-            <p>{winConditionMet ? 'You win!' : loseConditionMet ? "You're out of attempts. Sorry :(" : ''}</p>
-            <p>Score: {score}</p>
-            <p>{score == 0 ? 'Answers:' : 'Other answer(s):'} {remainingWords}</p>
-            <p style={{whiteSpace: "pre-wrap", pointerEvents: "none", userSelect: "none"}}>{emojified}</p>
-            <div className="close-results">
-                <button onClick={onClose}>Close</button>
-                <TwitterShareButton url={url} title={title}>
-                    <XIcon size={32} round />
-                </TwitterShareButton>
-
+        <div className="overlay">
+            <div className="results-modal">
+                <h1>Results</h1>
+                <p>{winConditionMet ? 'You win!' : loseConditionMet ? "You're out of attempts. Sorry :(" : ''}</p>
+                <p>Score: {score}</p>
+                <p>{score == 0 ? 'Answers:' : 'Other answer(s):'} {remainingWords}</p>
+                <p style={{whiteSpace: "pre-wrap", pointerEvents: "none", userSelect: "none"}}>{emojified}</p>
+                <div className="close-results">
+                    <button onClick={onClose}>Close</button>
+                    <TwitterShareButton url={url} title={title}>
+                        <XIcon size={32} round />
+                    </TwitterShareButton>
+                </div>
             </div>
-        </div>
+        </div>   
     )
 }
