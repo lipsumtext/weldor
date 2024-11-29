@@ -5,10 +5,12 @@ import { useState } from "react"
 import { createPortal } from "react-dom"
 import { RulesModal } from "./components/RulesModal/RulesModal"
 import { NavBar } from "./components/NavBar/NavBar"
+import { ResultsModal } from "./components/ResultsModal/ResultsModal"
 
 function App() {
     const weldorInstance = useWeldor()
     const [showRules, setShowRules] = useState(true)
+    const [showResults, setShowResults] = useState(true)
 
     return (
       <>
@@ -16,8 +18,14 @@ function App() {
           <RulesModal onClose={() => setShowRules(false)} />,
           document.body
         )}
+        {((weldorInstance.winConditionMet || weldorInstance.loseConditionMet) 
+          && showResults
+        ) && createPortal(
+          <ResultsModal onClose={() => setShowResults(false)} weldorInstance={weldorInstance}/>,
+          document.body
+        )}
         <NavBar setShowRules={setShowRules}/>
-        <WordGrid weldorInstance={weldorInstance}/>
+        <WordGrid rulesModalActive={showRules} weldorInstance={weldorInstance}/>
         <br></br>
         <br></br>
         <Keyboard weldorInstance={weldorInstance} />

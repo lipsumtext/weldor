@@ -9,18 +9,19 @@ export const useWeldor = () => {
                                                         [...Array.from({ length: 6 }, () => '')]
                                                     )])
     const [keyStatusSet, setKeyStatusSet] = useState([...Array.from({ length: 26 }, () => '')])
+    const [emojified, setEmojified] = useState('')
     const [activeBoxKey, setActiveBoxKey] = useState(0)
     const [validWordCount, setValidWordCount] = useState(0)
     const [winConditionMet, setWinConditionMet] = useState(false)
     const [loseConditionMet, setLoseConditionMet] = useState(false)
+    const [score, setScore] = useState(0)
     const { wordExists } = useWordChecker('en')
 
     useEffect(() => {
         if (validWordCount == 3) {
-            console.log('you win, gg boi')
+            setScore(score + 2)
             return setWinConditionMet(true)
         } else if (guessedWordSet[guessedWordSet.length - 1] !== '') {
-            console.log("you're out of guesses, better luck next time :(")
             return setLoseConditionMet(true)
         }
     }, [validWordCount, guessedWordSet])
@@ -43,6 +44,17 @@ export const useWeldor = () => {
         }
 
         return [...Array.from({ length: 6 }, (_, i) => (values[result[i]] || 'letter-box'))]
+    }
+
+    const mapEmoji = (rowStatus) => {
+        const values = {
+            'letter-box valid': '🟩',
+            'letter-box ambiguous': '🟨',
+            'letter-box invalid': '🟥'
+        }
+
+        let emojified = rowStatus.map((boxStatus) => (values[boxStatus]))
+        return emojified.join('') + '\n'
     }
 
     const returnColor = (word, wordSet) => {
@@ -72,6 +84,7 @@ export const useWeldor = () => {
             newBoxStatusSet[activeBoxKey] = mapBoxStatus(result)
             return newBoxStatusSet
         })
+        setEmojified((prev) => prev + mapEmoji(mapBoxStatus(result)))
         setKeyStatusSet((prev)=> {
             const newKeyStatusSet = [...prev]
             const valKeyStatusSet =  mapKeyStatus(result)
@@ -87,6 +100,8 @@ export const useWeldor = () => {
         return result
     }
 
+    const anagramSetSelected = anagramSet['sixLetterSet'][0] // please adjust this depending on LS-7 implementation
+
     const handleUserInput = ({ key }) => {
         if (winConditionMet || loseConditionMet){
             return
@@ -95,9 +110,11 @@ export const useWeldor = () => {
             setGuessedWord((prev) => prev.slice(0, -1))
         } else if (key === 'Enter') {
             if (guessedWord.length == 6 && !guessedWordSet.includes(guessedWord.toUpperCase())) {
-                let result = returnColor(guessedWord, anagramSet['sixLetterSet'][0])
-                if (result === 'G'.repeat(guessedWord.length)) 
+                let result = returnColor(guessedWord, anagramSetSelected)
+                if (result === 'G'.repeat(guessedWord.length)) {
                     setValidWordCount(validWordCount + 1)
+                    setScore(score + 1)
+                }
             }
         } else if (/^[a-zA-Z]$/.test(key)) {
             if (guessedWord.length < 6) 
@@ -113,6 +130,9 @@ export const useWeldor = () => {
         winConditionMet, 
         loseConditionMet,
         keyStatusSet,
+        score,
+        anagramSetSelected,
+        emojified,
         handleUserInput 
     }
 }

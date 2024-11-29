@@ -5,7 +5,7 @@
     position: fixed;
 }
 
-.rules-modal {
+.results-modal {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -13,7 +13,7 @@
     box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
     background-color: white;
     border: 2px solid rgb(240, 240, 240);
-    position: absolute;
+    position:  absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -26,25 +26,9 @@
     }
 }
 
-.title-bar {
-    margin-left: auto;
-}
-
-.how-to-play {
-    overflow: auto;
-
-    h3, h4 {
-        text-align: center;
-    }
-}
-
-.play-weldor {
+.close-results {
     margin-top: auto;
     margin-bottom: 50px;
-}
-
-p {
-    margin-left: 20px;
-    margin-right: 20px;
-    font-size: .95em;
+    display: flex;
+    gap: 10px;
 }
