@@ -87,6 +87,8 @@ export const useWeldor = () => {
         return result
     }
 
+    const anagramSetSelected = anagramSet['sixLetterSet'][0] // please adjust this depending on LS-7 implementation
+
     const handleUserInput = ({ key }) => {
         if (winConditionMet || loseConditionMet){
             return
@@ -95,7 +97,7 @@ export const useWeldor = () => {
             setGuessedWord((prev) => prev.slice(0, -1))
         } else if (key === 'Enter') {
             if (guessedWord.length == 6 && !guessedWordSet.includes(guessedWord.toUpperCase())) {
-                let result = returnColor(guessedWord, anagramSet['sixLetterSet'][0])
+                let result = returnColor(guessedWord, anagramSetSelected)
                 if (result === 'G'.repeat(guessedWord.length)) {
                     setValidWordCount(validWordCount + 1)
                     setScore(score + 1)
@@ -116,6 +118,7 @@ export const useWeldor = () => {
         loseConditionMet,
         keyStatusSet,
         score,
+        anagramSetSelected,
         handleUserInput 
     }
 }
