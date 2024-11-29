@@ -14,7 +14,7 @@ const Row = ({ word, savedWord, boxStatus, isActive }) => {
     )
 }
 
-export const WordGrid = ({weldorInstance}) => {
+export const WordGrid = ({rulesModalActive, weldorInstance}) => {
     const { 
         guessedWord, 
         guessedWordSet, 
@@ -24,6 +24,7 @@ export const WordGrid = ({weldorInstance}) => {
     } = weldorInstance
 
     useEffect(() => {
+        if (rulesModalActive) return
         window.addEventListener('keyup', handleUserInput)
         return () => window.removeEventListener('keyup', handleUserInput)
     }, [handleUserInput])
