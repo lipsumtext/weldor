@@ -1,4 +1,4 @@
-.container {
+.keyboard-container {
     width: min(425px, 95vw);
     display: flex;
     gap: 2.5px;

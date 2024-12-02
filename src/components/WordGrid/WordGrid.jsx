@@ -4,7 +4,7 @@ import './WordGrid.styles.css'
 
 const Row = ({ word, savedWord, boxStatus, isActive }) => {
     return (
-        <div className="container">
+        <div className="row-container">
             {Array.from({ length: 6 }, (_, i) => (
                 <div key={i} className={boxStatus[i] || 'letter-box'}>
                     { isActive ? word[i] || '' : savedWord[i]}

@@ -36,7 +36,7 @@ export const Keyboard = ({weldorInstance}) => {
     return (
         <>
             {Array.from({ length: 3 }, (_, i) => (
-                <div key={'keyboard-row-'+i} className="container">
+                <div key={'keyboard-row-'+i} className="keyboard-container">
                     {Array.from({ length: keys[i].length}, (_, j) => (
                         <KeyButton i={i} j={j} letter={keys[i][j]} handleUserInput={handleUserInput} keyStatusSet={keyStatusSet}></KeyButton>
                     ))}

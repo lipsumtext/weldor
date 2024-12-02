@@ -1,5 +1,5 @@
-.container {
-    width: min(360px, 95vw);
+.row-container {
+    width: min(425px, 95vw);
     display: flex;
     gap: 2.5px;
     margin: 2.5px;
