@@ -30,7 +30,7 @@ export const WordGrid = ({rulesModalActive, weldorInstance}) => {
     }, [handleUserInput])
 
     return (
-        <>
+        <div className="container">
             {Array.from({ length: 10 }, (_, i) => (
                 <Row word={guessedWord.toUpperCase()} 
                     savedWord={guessedWordSet[i]} 
@@ -38,6 +38,6 @@ export const WordGrid = ({rulesModalActive, weldorInstance}) => {
                     isActive={i === activeBoxKey}
                 />
             ))}
-        </>
+        </div>
     )
 }
