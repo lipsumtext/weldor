@@ -5,6 +5,7 @@
 }
 
 body {
+    transition: 0.5s;
     font-family: "Rubik", sans-serif;
     display: flex;
     flex-flow: column;
@@ -14,9 +15,5 @@ body {
 .dark-mode {
     background-color: black;
     color: white;
-    transition: 0.5s;
-}
-
-.light-mode {
     transition: 0.5s;
 }

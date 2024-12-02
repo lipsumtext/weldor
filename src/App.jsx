@@ -17,11 +17,10 @@ function App() {
 
     return (
       <>
-        {document.body.classList.add(darkMode ? 'dark-mode' : 'light-mode')}
         {
           darkMode 
-          ? document.body.classList.replace('light-mode', 'dark-mode') 
-          : document.body.classList.replace('dark-mode', 'light-mode')
+          ? document.body.classList.add('dark-mode') 
+          : document.body.classList.remove('dark-mode')
         }
         {showRules && createPortal(
           <RulesModal onClose={() => setShowRules(false)} />,
