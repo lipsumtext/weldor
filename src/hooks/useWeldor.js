@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import anagramSet from '../../src/data/anagramSet.json'
-import { useWordChecker } from 'react-word-checker'
+import { useWordChecker } from "react-word-checker"
+import { getAnagramSet } from "./getAnagramSet"
 
 export const useWeldor = () => {
     const [guessedWord, setGuessedWord] = useState('')
@@ -100,7 +100,8 @@ export const useWeldor = () => {
         return result
     }
 
-    const anagramSetSelected = anagramSet['sixLetterSet'][0] // please adjust this depending on LS-7 implementation
+    // const anagramSetSelected = anagramSet['sixLetterSet'][0] // please adjust this depending on LS-7 implementation
+    const anagramSetSelected = getAnagramSet(6)
 
     const handleUserInput = ({ key }) => {
         if (winConditionMet || loseConditionMet){

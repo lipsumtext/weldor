@@ -25,7 +25,6 @@
     "@vitejs/plugin-react": "^4.3.3",
     "check-word": "^1.1.0",
     "fix-esm": "^1.0.1",
-    "isaac": "^0.0.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-share": "^5.1.1",
