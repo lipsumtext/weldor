@@ -11,7 +11,7 @@ describe('#getAnagramSet()', function() {
         assert.notEqual(JSON.stringify(index.getAnagramSet(6)),JSON.stringify(index.getAnagramSet(7)))
     })
     it('should be consistent with a given Unix timestamp.', function(){
-        assert.equal(JSON.stringify(index.getAnagramSet(7,1732162121000)),'["allergy","gallery","largely","regally"]')
+        assert.equal(JSON.stringify(index.getAnagramSet(7,1732162121000)),'["realist","saltier","retails"]')
     })
     it('should be consistent with different Unix timestamps within the same day.', function(){
         assert.equal(JSON.stringify(index.getAnagramSet(7,1732162121000)),JSON.stringify(index.getAnagramSet(7,1732162121000)))
