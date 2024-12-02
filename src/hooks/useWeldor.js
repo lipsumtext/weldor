@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import { useWordChecker } from 'react-word-checker'
-import anagramSix from '../anagram_sets/6.json'
+import anagram5 from '../anagram_sets/5.json'
+import anagram6 from '../anagram_sets/6.json'
+import anagram7 from '../anagram_sets/7.json'
 
 const xorshift64 = (a) => {
     let x = a
@@ -19,7 +21,9 @@ const getAnagram = (length, timestamp=-1) => {
 
     // const anagramFile = require('json!../anagram_sets/'+length+'.json')
     let anagramFile = {"total":0}
-    if(length==6) anagramFile = anagramSix
+    if(length==5) anagramFile = anagram5
+    if(length==6) anagramFile = anagram6
+    if(length==7) anagramFile = anagram7
 
     let random_number = unixdate;
     for(let i=0;i<10;i=i+1) random_number = xorshift64(random_number)
