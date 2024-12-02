@@ -10,24 +10,41 @@
     justify-content: flex-start;
     align-items: center;
     flex-flow: column;
+    text-align: center;
     box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
     background-color: white;
     border: 2px solid rgb(240, 240, 240);
+    border-radius: 8px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 380px;
-    height: 660px;
-
-    @media screen and (max-width: 425px) {
-        width: 100vw;
-        height: 100vh;
-    }
+    width: min(380px, 95vw);
+    height: min(660px, 95vh);
 }
 
 .title-bar {
     margin-left: auto;
+    margin-right: 6px;
+
+    button {
+        background-color: transparent;
+        border: none;
+        font-size: 1.5rem;
+    }
+
+    button:hover {
+        color: gray;
+        cursor: pointer;
+    }
+}
+
+.welcome {
+    padding-bottom: 17px;
+    h1 {
+        text-align: center;
+        padding-bottom: 15px;
+    }
 }
 
 .how-to-play {
@@ -35,17 +52,41 @@
 
     h3, h4 {
         text-align: center;
+        padding-bottom: 8px;
     }
 }
 
 .play-weldor {
     margin-top: auto;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+
+    button {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 24px;
+        padding-right: 24px;
+        border: 1.5px solid black;
+        border-radius: 5px;
+        background-color: transparent;
+        font-family: inherit;
+        font-size: 1rem;
+    }
+
+    button:hover {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+
+    button:not(:hover) {
+        transition: 0.5s;
+    }
 }
 
 p {
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
     font-size: .95em;
 }
 
@@ -54,5 +95,23 @@ p {
         background-color: rgb(40,40,40);
         border-color: rgb(40,40,40);
         box-shadow: none;
+    }
+
+    .title-bar > button {
+        color: white;
+    }
+
+    .title-bar > button:hover {
+        color: gray;
+    }
+
+    .play-weldor > button {
+        border-color: white;
+        color: white;
+    }
+
+    .play-weldor > button:hover {
+        background-color: white;
+        color: black;
     }
 }
