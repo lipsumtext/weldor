@@ -11,9 +11,16 @@ function App() {
     const weldorInstance = useWeldor()
     const [showRules, setShowRules] = useState(true)
     const [showResults, setShowResults] = useState(true)
+    const [darkMode, setDarkMode] = useState(false)
 
     return (
       <>
+        {document.body.classList.add('light-mode')}
+        {
+          darkMode 
+          ? document.body.classList.replace('light-mode', 'dark-mode') 
+          : document.body.classList.replace('dark-mode', 'light-mode')
+        }
         {showRules && createPortal(
           <RulesModal onClose={() => setShowRules(false)} />,
           document.body
@@ -24,7 +31,7 @@ function App() {
           <ResultsModal onClose={() => setShowResults(false)} weldorInstance={weldorInstance}/>,
           document.body
         )}
-        <NavBar setShowRules={setShowRules}/>
+        <NavBar setShowRules={setShowRules} setDarkMode={setDarkMode} />
         <WordGrid rulesModalActive={showRules} weldorInstance={weldorInstance}/>
         <Keyboard weldorInstance={weldorInstance} />
       </>

@@ -11,6 +11,14 @@ body {
     align-items: center;
 }
 
-h1 {
-    text-align: center;
+.dark-mode {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+}
+
+.light-mode {
+    background-color: white;
+    color: black;
+    transition: 0.5s;
 }
