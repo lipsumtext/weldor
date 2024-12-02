@@ -16,17 +16,17 @@
 .rules {
     width: 22px;
     height: 22px;
-    background-color: black;
+    background-color: transparent;
+    border: 2px solid black;
     border-radius: 3px;
-    border-width: 0;
-    font-size: 12.5px;
-    font-weight: bold;
-    color: white;
+    font-size: 14px;
+    font-weight: bolder;
     cursor: pointer;
 }
 
 .rules:hover {
-    background-color: gray;
+    background-color: black;
+    color: white;
     transition: 0.4s;
 }
 
