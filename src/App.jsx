@@ -26,8 +26,6 @@ function App() {
         )}
         <NavBar setShowRules={setShowRules}/>
         <WordGrid rulesModalActive={showRules} weldorInstance={weldorInstance}/>
-        <br></br>
-        <br></br>
         <Keyboard weldorInstance={weldorInstance} />
       </>
     )
