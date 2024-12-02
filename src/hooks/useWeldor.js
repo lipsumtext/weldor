@@ -1,6 +1,47 @@
 import { useEffect, useState } from "react"
-import anagramSet from '../../src/data/anagramSet.json'
 import { useWordChecker } from 'react-word-checker'
+import anagramSix from '../anagram_sets/6.json'
+
+const xorshift64 = (a) => {
+    let x = a
+    x ^= x << 13
+    x ^= x >> 17
+    x ^= x << 5
+    return x
+}
+
+const getAnagram = (length, timestamp=-1) => {
+    // Set the days since Unix epoch to use for randomization.
+    // Use either current time, or a given timestamp.
+    let unixdate = timestamp
+    if (unixdate == -1) unixdate = new Date()
+    unixdate = 536870911 + Math.floor(unixdate/(8.64e7))
+
+    // const anagramFile = require('json!../anagram_sets/'+length+'.json')
+    let anagramFile = {"total":0}
+    if(length==6) anagramFile = anagramSix
+
+    let random_number = unixdate;
+    for(let i=0;i<10;i=i+1) random_number = xorshift64(random_number)
+
+    let random_number_prev = unixdate-1;
+    for(let i=0;i<10;i=i+1) random_number_prev = xorshift64(random_number_prev)
+
+    let random_number_prev_alt = random_number_prev;
+    for(let i=0;i<10;i=i+1) random_number_prev_alt = xorshift64(random_number_prev_alt)
+
+
+    if(random_number%anagramFile["total"]==random_number_prev%anagramFile["total"] ||
+       random_number%anagramFile["total"]==random_number_prev_alt%anagramFile["total"]
+     ){
+        const offset = random_number%anagramFile["total"]
+        for(let i=0;i<10;i=i+1) random_number = xorshift64(random_number)
+    }
+
+    let index = random_number % anagramFile["total"]
+    let result = anagramFile["anagrams"][index]
+    return result
+}
 
 export const useWeldor = () => {
     const [guessedWord, setGuessedWord] = useState('')
@@ -100,7 +141,8 @@ export const useWeldor = () => {
         return result
     }
 
-    const anagramSetSelected = anagramSet['sixLetterSet'][0] // please adjust this depending on LS-7 implementation
+    // const anagramSetSelected = anagramSet['sixLetterSet'][0] // please adjust this depending on LS-7 implementation
+    const anagramSetSelected = getAnagram(6)
 
     const handleUserInput = ({ key }) => {
         if (winConditionMet || loseConditionMet){
