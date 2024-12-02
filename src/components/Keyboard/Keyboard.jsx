@@ -12,7 +12,7 @@ export const KeyButton = ({i,j,letter,handleUserInput,keyStatusSet}) => {
     let letterPrint = letter
     let styling = ''
     if(letterPrint == '1')letterPrint='⌫' 
-    else if(letterPrint == '2')letterPrint='↵'
+    else if(letterPrint == '2')letterPrint='↩'
     else {
         let index = letterPrint.charCodeAt(0)-96
         if (index<0) index = letterPrint.charCodeAt(0)-64
