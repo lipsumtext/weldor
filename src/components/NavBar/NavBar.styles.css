@@ -13,9 +13,9 @@
     anchor-name: --title;
 }
 
-.rules {
-    width: 22px;
-    height: 22px;
+.navbar-item {
+    width: 25px;
+    height: 25px;
     background-color: transparent;
     border: 2px solid black;
     border-radius: 3px;
@@ -24,13 +24,13 @@
     cursor: pointer;
 }
 
-.rules:hover {
+.navbar-item:hover {
     background-color: black;
     color: white;
     transition: 0.4s;
 }
 
-.rules:not(:hover) {
+.navbar-item:not(:hover) {
     transition: 0.4s;
 }
 
@@ -40,4 +40,17 @@ ul {
     position: absolute;
     left: anchor(--title right);
     margin-left: 8px;
+    gap: 5px;
+}
+
+.dark-mode {
+    .navbar-item {
+        border-color: white;
+        color: white;
+    }
+
+    .navbar-item:hover {
+        background-color: white;
+        color: black;
+    }
 }

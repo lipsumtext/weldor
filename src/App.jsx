@@ -6,16 +6,18 @@ import { createPortal } from "react-dom"
 import { RulesModal } from "./components/RulesModal/RulesModal"
 import { NavBar } from "./components/NavBar/NavBar"
 import { ResultsModal } from "./components/ResultsModal/ResultsModal"
+import { useMediaQuery } from "react-responsive"
 
 function App() {
     const weldorInstance = useWeldor()
     const [showRules, setShowRules] = useState(true)
     const [showResults, setShowResults] = useState(true)
-    const [darkMode, setDarkMode] = useState(false)
+    const prefersDarkMode = useMediaQuery({query: '(prefers-color-scheme: dark)'})
+    const [darkMode, setDarkMode] = useState(prefersDarkMode)
 
     return (
       <>
-        {document.body.classList.add('light-mode')}
+        {document.body.classList.add(darkMode ? 'dark-mode' : 'light-mode')}
         {
           darkMode 
           ? document.body.classList.replace('light-mode', 'dark-mode') 
@@ -31,7 +33,7 @@ function App() {
           <ResultsModal onClose={() => setShowResults(false)} weldorInstance={weldorInstance}/>,
           document.body
         )}
-        <NavBar setShowRules={setShowRules} setDarkMode={setDarkMode} />
+        <NavBar setShowRules={setShowRules} setDarkMode={setDarkMode} darkMode={darkMode} />
         <WordGrid rulesModalActive={showRules} weldorInstance={weldorInstance}/>
         <Keyboard weldorInstance={weldorInstance} />
       </>

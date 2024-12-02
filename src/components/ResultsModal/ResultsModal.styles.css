@@ -32,3 +32,11 @@
     display: flex;
     gap: 10px;
 }
+
+.dark-mode {
+    .results-modal {
+        background-color: rgb(40,40,40);
+        border-color: rgb(40,40,40);
+        box-shadow: none;
+    }
+}
