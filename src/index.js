@@ -5,7 +5,21 @@ const checkIfWord = (word) => {
     return words.check(word)
 }
 
-const isaac = require( 'isaac')
+// import anagram5 from './anagram_sets/5.json' with { type: "json" }
+// import anagram6 from './anagram_sets/6.json' with { type: "json" }
+// import anagram7 from './anagram_sets/7.json' with { type: "json" }
+
+const anagram5 = require('./anagram_sets/5.json')
+const anagram6 = require('./anagram_sets/6.json')
+const anagram7 = require('./anagram_sets/7.json')
+
+const xorshift64 = (a) => {
+    let x = a
+    x ^= x << 13
+    x ^= x >> 17
+    x ^= x << 5
+    return x
+}
 
 const getAnagramSet = (length, timestamp=-1) => {
     // Set the days since Unix epoch to use for randomization.
@@ -14,29 +28,32 @@ const getAnagramSet = (length, timestamp=-1) => {
     if (unixdate == -1) unixdate = new Date()
     unixdate = 536870911 + Math.floor(unixdate/(8.64e7))
 
-    isaac.seed(unixdate)
-    isaac.prng(10)
-    let random_number = Math.abs(isaac.rand())
+    let anagramFile = {"total":0}
+    if(length==5) anagramFile = anagram5
+    if(length==6) anagramFile = anagram6
+    if(length==7) anagramFile = anagram7
 
-    // Safety: Check if previous day is the same.
-    // If so, run PRNG for longer.
-    isaac.seed(Math.abs(unixdate-86400000))
-    isaac.prng(10)
-    let random_number_2 = Math.abs(isaac.rand())
+    let random_number = unixdate;
+    for(let i=0;i<10;i=i+1) random_number = xorshift64(random_number)
 
-    if (random_number == random_number_2){
-        isaac.seed(unixdate)
-        isaac.prng(20)
-        random_number = Math.abs(isaac.rand())
+    let random_number_prev = unixdate-1;
+    for(let i=0;i<10;i=i+1) random_number_prev = xorshift64(random_number_prev)
+
+    let random_number_prev_alt = random_number_prev;
+    for(let i=0;i<10;i=i+1) random_number_prev_alt = xorshift64(random_number_prev_alt)
+
+
+    if(random_number%anagramFile["total"]==random_number_prev%anagramFile["total"] ||
+       random_number%anagramFile["total"]==random_number_prev_alt%anagramFile["total"]
+     ){
+        const offset = random_number%anagramFile["total"]
+        for(let i=0;i<10;i=i+1) random_number = xorshift64(random_number)
     }
 
-    const anagramFile = require('./anagram_sets/'+length+'.json')
-    // Condition checking.
     let index = random_number % anagramFile["total"]
     let result = anagramFile["anagrams"][index]
     return result
 }
-
 const returnColor = (word, wordSet, length) => {
     if (checkIfWord(word) && word.length == length) {
         let result = '' // Green = G, Yellow = Y, Red = R
@@ -65,7 +82,7 @@ const gameLoop = (debug=false) => {
     let count = 0, requiredLength = 6, winConditionMet = false
     let resultColors = [], correctWords = []
     let anagramSet = getAnagramSet(6)
-    if (debug==true) anagramSet = getAnagramSet(6,86400000*87)
+    if (debug==true) anagramSet = ["canter","nectar","recant","trance"]
 
     while (count < 10) {
         if (correctWords.length == 3) {

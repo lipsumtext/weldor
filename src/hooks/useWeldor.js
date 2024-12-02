@@ -12,7 +12,7 @@ const xorshift64 = (a) => {
     return x
 }
 
-const getAnagram = (length, timestamp=-1) => {
+const getAnagramSet = (length, timestamp=-1) => {
     // Set the days since Unix epoch to use for randomization.
     // Use either current time, or a given timestamp.
     let unixdate = timestamp
@@ -146,7 +146,7 @@ export const useWeldor = () => {
     }
 
     // const anagramSetSelected = anagramSet['sixLetterSet'][0] // please adjust this depending on LS-7 implementation
-    const anagramSetSelected = getAnagram(6)
+    const anagramSetSelected = getAnagramSet(6)
 
     const handleUserInput = ({ key }) => {
         if (winConditionMet || loseConditionMet){
