@@ -1,17 +1,43 @@
 .navbar {
+    padding-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+.title {
     margin-left: auto;
     margin-right: auto;
+    font-size: 30px;
+    anchor-name: --title;
 }
 
-h1 {
-    font-size: 30px;
+.rules {
+    width: 22px;
+    height: 22px;
+    background-color: black;
+    border-radius: 3px;
+    border-width: 0;
+    font-size: 12.5px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.rules:hover {
+    background-color: gray;
+    transition: 0.4s;
+}
+
+.rules:not(:hover) {
+    transition: 0.4s;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    position: absolute;
+    left: anchor(--title right);
+    margin-left: 8px;
 }
