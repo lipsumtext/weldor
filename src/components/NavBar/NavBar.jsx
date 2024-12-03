@@ -9,7 +9,15 @@ export const NavBar = ({ setShowRules, setDarkMode, darkMode }) => {
                     <button className='navbar-item' onClick={() => setShowRules(true)}>?</button>
                 </li>
                 <li>
-                    <button className='navbar-item' onClick={() => setDarkMode((prev) => !prev)}>{darkMode ? '☀️' : '🌙'}</button>
+                    <button 
+                        className='navbar-item' 
+                        onClick={(e) => {
+                            setDarkMode((prev) => !prev)
+                            e.target.blur() // Prevents enter key from triggering button if pressed once
+                        }}
+                    >
+                        {darkMode ? '☀️' : '🌙'}
+                    </button>
                 </li>
             </ul>
         </nav>
