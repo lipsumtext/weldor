@@ -24,7 +24,7 @@
 }
 
 .key-valid {
-    background-color: lightgreen;
+    background-color: rgb(80, 200, 120);
 }
 
 .key-invalid {

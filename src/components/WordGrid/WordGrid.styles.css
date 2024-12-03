@@ -28,15 +28,15 @@
 }
 
 .valid {
-    background-color: lightgreen;
+    background-color: rgb(80, 200, 120);
 }
 
 .invalid {
-    background-color: lightcoral;
+    background-color: red;
 }
 
 .ambiguous {
-    background-color: yellow;
+    background-color: rgb(253, 218, 13);
 }
 
 .center {
