@@ -8,7 +8,7 @@ export const RulesModal = ({ onClose }) => {
                     <button onClick={onClose}>✖</button>
                 </div>
                 <div className="welcome">
-                    <h1>Welcome to Weldor!</h1>
+                    <h1>Welcome to Weldor</h1>
                     <p>
                         Our own twist on the internet classic, Wordle. Test your vocabulary and, more importantly, your anagram skills in this challenging, yet fun, word game.
                     </p>
@@ -26,8 +26,8 @@ export const RulesModal = ({ onClose }) => {
                         <br /><br />
                         Once you make a correct guess, come up with 2 anagrams for that word to win!
                         <br /><br />
-                        <h4>Enjoy! 😊</h4>
                     </p>
+                    <h4>Enjoy! 😄</h4>
                 </div>
                 <div className="play-weldor">
                     <button onClick={onClose}>Play Weldor</button>

@@ -1,14 +1,23 @@
 import './NavBar.styles.css'
 
-export const NavBar = ({ setShowRules }) => {
+export const NavBar = ({ setShowRules, setDarkMode, darkMode }) => {
     return (
         <nav className="navbar">
+            <h1 className='title'>Weldor</h1>
             <ul>
                 <li>
-                    <h1>Weldor</h1>
+                    <button className='navbar-item' onClick={() => setShowRules(true)}>?</button>
                 </li>
                 <li>
-                    <button onClick={() => setShowRules(true)}>Show rules</button>
+                    <button 
+                        className='navbar-item' 
+                        onClick={(e) => {
+                            setDarkMode((prev) => !prev)
+                            e.target.blur() // Prevents enter key from triggering button if pressed once
+                        }}
+                    >
+                        {darkMode ? '☀️' : '🌙'}
+                    </button>
                 </li>
             </ul>
         </nav>

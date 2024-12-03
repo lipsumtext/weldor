@@ -1,4 +1,10 @@
 .container {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.row-container {
+    width: min(425px, 95vw);
     display: flex;
     gap: 2.5px;
     margin: 2.5px;
@@ -22,15 +28,15 @@
 }
 
 .valid {
-    background-color: lightgreen;
+    background-color: rgb(80, 200, 120);
 }
 
 .invalid {
-    background-color: lightcoral;
+    background-color: red;
 }
 
 .ambiguous {
-    background-color: yellow;
+    background-color: rgb(253, 218, 13);
 }
 
 .center {

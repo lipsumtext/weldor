@@ -12,7 +12,7 @@ export const KeyButton = ({i,j,letter,handleUserInput,keyStatusSet}) => {
     let letterPrint = letter
     let styling = ''
     if(letterPrint == '1')letterPrint='⌫' 
-    else if(letterPrint == '2')letterPrint='↵'
+    else if(letterPrint == '2')letterPrint='↩'
     else {
         let index = letterPrint.charCodeAt(0)-96
         if (index<0) index = letterPrint.charCodeAt(0)-64
@@ -36,7 +36,7 @@ export const Keyboard = ({weldorInstance}) => {
     return (
         <>
             {Array.from({ length: 3 }, (_, i) => (
-                <div key={'keyboard-row-'+i} className="container">
+                <div key={'keyboard-row-'+i} className="keyboard-container">
                     {Array.from({ length: keys[i].length}, (_, j) => (
                         <KeyButton i={i} j={j} letter={keys[i][j]} handleUserInput={handleUserInput} keyStatusSet={keyStatusSet}></KeyButton>
                     ))}

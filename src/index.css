@@ -5,12 +5,15 @@
 }
 
 body {
-    font-family: sans-serif;
+    transition: 0.5s;
+    font-family: "Rubik", sans-serif;
     display: flex;
     flex-flow: column;
     align-items: center;
 }
 
-h1 {
-    text-align: center;
+.dark-mode {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
 }

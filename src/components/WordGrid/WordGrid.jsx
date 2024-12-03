@@ -4,7 +4,7 @@ import './WordGrid.styles.css'
 
 const Row = ({ word, savedWord, boxStatus, isActive }) => {
     return (
-        <div className="container">
+        <div className="row-container">
             {Array.from({ length: 6 }, (_, i) => (
                 <div key={i} className={boxStatus[i] || 'letter-box'}>
                     { isActive ? word[i] || '' : savedWord[i]}
@@ -30,7 +30,7 @@ export const WordGrid = ({rulesModalActive, weldorInstance}) => {
     }, [handleUserInput])
 
     return (
-        <>
+        <div className="container">
             {Array.from({ length: 10 }, (_, i) => (
                 <Row word={guessedWord.toUpperCase()} 
                     savedWord={guessedWordSet[i]} 
@@ -38,6 +38,6 @@ export const WordGrid = ({rulesModalActive, weldorInstance}) => {
                     isActive={i === activeBoxKey}
                 />
             ))}
-        </>
+        </div>
     )
 }
