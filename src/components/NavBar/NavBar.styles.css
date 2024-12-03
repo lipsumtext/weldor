@@ -1,6 +1,7 @@
 .navbar {
     padding-top: 20px;
     display: flex;
+    flex-flow: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -11,7 +12,6 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 30px;
-    anchor-name: --title;
 }
 
 .navbar-item {
@@ -36,11 +36,9 @@
 }
 
 ul {
+    margin-top: 8px;
     list-style-type: none;
     display: flex;
-    position: absolute;
-    left: anchor(--title right);
-    margin-left: 8px;
     gap: 5px;
 }
 
