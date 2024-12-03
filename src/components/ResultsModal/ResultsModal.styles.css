@@ -6,23 +6,42 @@
 }
 
 .results-modal {
+    padding-top: 24px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-flow: column;
+    gap: 12px;
     box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
     background-color: white;
     border: 2px solid rgb(240, 240, 240);
+    border-radius: 8px;
     position:  absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 380px;
-    height: 660px;
+    height: min(660px, 95vh);
 
-    @media screen and (max-width: 425px) {
+    @media screen and (max-width: 435px) {
         width: 100vw;
         height: 100vh;
+        border-radius: 0;
+        position: fixed;
+    }
+}
+
+.results-info {
+    margin-top: 48px;
+    overflow: auto;
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    gap: 12px;
+
+    img {
+        align-self: center;
+        user-select: none;
     }
 }
 
@@ -31,6 +50,14 @@
     margin-bottom: 50px;
     display: flex;
     gap: 10px;
+
+    h3 {
+        margin-top: 4.5px;
+    }
+}
+
+.share-twitter:hover {
+    opacity: 0.5;
 }
 
 .dark-mode {
