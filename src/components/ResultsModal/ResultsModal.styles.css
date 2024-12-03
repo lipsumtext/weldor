@@ -25,7 +25,7 @@
 
     @media screen and (max-width: 435px) {
         width: 100vw;
-        height: 100vh;
+        height: 100svh;
         border-radius: 0;
         position: fixed;
     }
