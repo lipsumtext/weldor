@@ -40,7 +40,7 @@ export const getAnagramSet = (length, timestamp=-1) => {
         for(let i=0;i<10;i=i+1) random_number = xorshift64(random_number)
     }
 
-    let index = random_number % anagramFile["total"]
+    let index = Math.abs(random_number % anagramFile["total"] )
     let result = anagramFile["anagrams"][index]
     return result
 }
