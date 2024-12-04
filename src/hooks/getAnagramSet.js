@@ -33,8 +33,8 @@ export const getAnagramSet = (length, timestamp=-1) => {
     for(let i=0;i<10;i=i+1) random_number_prev_alt = xorshift64(random_number_prev_alt)
 
 
-    if(random_number%anagramFile["total"]==random_number_prev%anagramFile["total"] ||
-       random_number%anagramFile["total"]==random_number_prev_alt%anagramFile["total"]
+    if(Math.abs(random_number%anagramFile["total"])==Math.abs(random_number_prev%anagramFile["total"]) ||
+       Math.abs(random_number%anagramFile["total"])==Math.abs(random_number_prev_alt%anagramFile["total"])
      ){
         const offset = random_number%anagramFile["total"]
         for(let i=0;i<10;i=i+1) random_number = xorshift64(random_number)
