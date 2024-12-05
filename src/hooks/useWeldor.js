@@ -79,11 +79,9 @@ export const useWeldor = () => {
 
     useEffect(() => {
         if (validWordCount == 3) {
-            setValidWordCount(0)    // Ensures we don't have to remove previousDay twice to reset win condition; please remove if better solution found
-            return setWinConditionMet(true)
+            return setWinConditionMet((prev) => !prev)
         } else if (guessedWordSet.filter(Boolean).length == guessedWordSet.length) {
-            setGuessedWordSet([...Array.from({ length: 10 }, () => '')])    // Same case as win condition bug; also feel free to remove once solution found
-            return setLoseConditionMet(true)
+            return setLoseConditionMet((prev) => !prev)
         } 
     }, [validWordCount, guessedWordSet])
 
