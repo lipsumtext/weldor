@@ -42,8 +42,8 @@ export const useWeldor = () => {
             setKeyStatusSet([...Array.from({ length: 26 }, () => '')])
             setEmojified('')
             setValidWordCount(0)
-            setWinConditionMet(false)
-            setLoseConditionMet(false)
+            //setWinConditionMet(false)
+            //setLoseConditionMet(false)
             setScore(0)
         }
         return
@@ -79,10 +79,14 @@ export const useWeldor = () => {
 
     useEffect(() => {
         if (validWordCount == 3) {
-            return setWinConditionMet((prev) => !prev)
+            return setWinConditionMet(true)
         } else if (guessedWordSet.filter(Boolean).length == guessedWordSet.length) {
-            return setLoseConditionMet((prev) => !prev)
-        } 
+            return setLoseConditionMet(true)
+        } else {
+            setWinConditionMet(false)
+            setLoseConditionMet(false)
+            return
+        }
     }, [validWordCount, guessedWordSet])
 
     const mapBoxStatus = (result = []) => {
