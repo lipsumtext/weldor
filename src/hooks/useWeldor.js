@@ -22,6 +22,7 @@ export const useWeldor = () => {
     const [winConditionMet, setWinConditionMet] = useState(JSON.parse(localStorage.getItem('winConditionMet')) || false)
     const [loseConditionMet, setLoseConditionMet] = useState(JSON.parse(localStorage.getItem('loseConditionMet')) || false)
     const [score, setScore] = useState(JSON.parse(localStorage.getItem('score')) || 0)
+    const [shake, setShake] = useState(false)
 
     const { wordExists } = useWordChecker('en')
 
@@ -180,6 +181,11 @@ export const useWeldor = () => {
                     setValidWordCount(validWordCount + 1)
                     setScore((prev) => prev == 2 ? prev + 3 : prev + 1)
                 }
+                else if (result == null){
+                    // Shake shake shake!
+                    setShake(true)
+                    setTimeout(()=>{setShake(false)},1000)
+                }
             }
         } else if (/^[a-zA-Z]$/.test(key)) {
             if (guessedWord.length < 6) 
@@ -198,6 +204,7 @@ export const useWeldor = () => {
         score,
         anagramSetSelected,
         emojified,
-        handleUserInput 
+        handleUserInput,
+        shake
     }
 }
