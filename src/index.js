@@ -28,7 +28,7 @@ const getAnagramSet = (length, timestamp=-1) => {
     if (unixdate == -1) unixdate = new Date()
     unixdate = 536870911 + Math.floor(unixdate/(8.64e7))
 
-    let anagramFile = {"total":0}
+    let anagramFile = {}
     if(length==5) anagramFile = anagram5
     if(length==6) anagramFile = anagram6
     if(length==7) anagramFile = anagram7
@@ -50,7 +50,7 @@ const getAnagramSet = (length, timestamp=-1) => {
         for(let i=0;i<10;i=i+1) random_number = xorshift64(random_number)
     }
 
-    let index = random_number % anagramFile["total"]
+    let index = Math.abs(random_number % anagramFile["total"])
     let result = anagramFile["anagrams"][index]
     return result
 }
@@ -81,9 +81,9 @@ const rl = require('readline-sync')
 const gameLoop = (debug=false) => {
     let count = 0, requiredLength = 6, winConditionMet = false
     let resultColors = [], correctWords = []
-    let anagramSet = getAnagramSet(6)
+    let anagramSet = []
     if (debug==true) anagramSet = ["canter","nectar","recant","trance"]
-
+    else anagramSet = getAnagramSet(6)
     while (count < 10) {
         if (correctWords.length == 3) {
             winConditionMet = true
