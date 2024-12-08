@@ -39,7 +39,7 @@ describe('#gameLoop()', () => {
         questionStub.onCall(8).returns('trance')
         questionStub.onCall(9).returns('canter')
 
-        gameLoop()
+        gameLoop(true)
 
         expect(consoleLogStub.calledWith('You\'re out of attempts. Sorry :(')).to.be.true
     })
