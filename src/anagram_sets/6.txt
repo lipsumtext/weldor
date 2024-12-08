@@ -34,6 +34,7 @@ please
 assert
 asters
 stares
+
 barely
 barley
 bleary
@@ -78,6 +79,7 @@ daters
 trades
 treads
 stared
+
 dearth
 hatred
 thread
@@ -118,6 +120,7 @@ stride
 doters
 sorted
 stored
+
 drapes
 padres
 parsed
@@ -170,6 +173,7 @@ stifle
 filter
 lifter
 trifle
+
 forest
 fortes
 foster
@@ -252,6 +256,7 @@ pintos
 piston
 pitons
 points
+
 rashes
 shares
 shears
