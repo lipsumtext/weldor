@@ -61,7 +61,7 @@ export const ResultsModal = ({ weldorInstance,  }) => {
                     <h3>{winConditionMet ? 'You win! 🎉' : loseConditionMet ? "You're out of attempts, sorry. 😭" : ''}</h3>
                     <p>Score: {score}</p>
                     <p>{score == 0 ? 'Answers:' : 'Other answer(s):'}</p>
-                    <p>{remainingWords}</p>
+                    <p>{!remainingWords.length ? '-' : remainingWords}</p>
                     <p style={{whiteSpace: "pre-wrap", pointerEvents: "none", userSelect: "none", fontSize: '0.8rem'}}>{emojified}</p>
                 </div>
                 <p style={{fontSize: '0.85rem'}}>Resets in: {countDown}</p>
