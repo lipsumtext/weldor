@@ -45,6 +45,9 @@ export const useWeldor = () => {
             //setWinConditionMet(false)
             //setLoseConditionMet(false)
             setScore(0)
+
+            // Store presentDay into 'previousDay':
+            localStorage.setItem('previousDay', presentDay)
         }
         return
     }, [presentDay])
@@ -61,9 +64,6 @@ export const useWeldor = () => {
         localStorage.setItem('validWordCount', validWordCount)
         localStorage.setItem('loseConditionMet', loseConditionMet)
         localStorage.setItem('score', score)
-
-        // Store presentDay into 'previousDay':
-        localStorage.setItem('previousDay', presentDay)
         return
     }, [
         winConditionMet, 
