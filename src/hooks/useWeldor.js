@@ -26,7 +26,7 @@ export const useWeldor = () => {
     const { wordExists } = useWordChecker('en')
 
     const date = new Date()
-    const presentDay = date.getUTCDay()
+    const presentDay = date.getUTCDay() + 1 // Ensure that we don't end up with 0th day
 
     // On mount, retrieves data from local storage if it exists                                               
     useEffect(() => {
@@ -45,9 +45,6 @@ export const useWeldor = () => {
             //setWinConditionMet(false)
             //setLoseConditionMet(false)
             setScore(0)
-
-            // Store presentDay into 'previousDay':
-            localStorage.setItem('previousDay', presentDay)
         }
         return
     }, [presentDay])
@@ -64,6 +61,9 @@ export const useWeldor = () => {
         localStorage.setItem('validWordCount', validWordCount)
         localStorage.setItem('loseConditionMet', loseConditionMet)
         localStorage.setItem('score', score)
+
+        // Store presentDay into 'previousDay':
+        localStorage.setItem('previousDay', presentDay)
         return
     }, [
         winConditionMet, 
@@ -74,7 +74,8 @@ export const useWeldor = () => {
         emojified, 
         validWordCount, 
         loseConditionMet,
-        score
+        score,
+        presentDay
     ])
 
     useEffect(() => {
