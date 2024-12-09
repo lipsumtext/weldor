@@ -18,11 +18,11 @@ export const RulesModal = ({ onClose }) => {
                     <p>
                         Enter any 6-letter word that comes to mind. The corresponding boxes will be marked accordingly:
                         <br /><br />
-                        🟩 – The letter is within any word in the anagram set.
+                        <img src="assets/RulesModal/green-square-svgrepo-com.svg" /> – The letter is within any word in the anagram set.
                         <br /><br />
-                        🟥 – The letter is NOT in the anagram set.
+                        <img src="assets/RulesModal/red-square-svgrepo-com.svg" /> – The letter is NOT in the anagram set.
                         <br /><br />
-                        🟨 – The letter is within any word in the anagram set, BUT of the wrong count (try thinking of words with more or less of this letter)
+                        <img src="assets/RulesModal/yellow-square-svgrepo-com.svg" /> – The letter is within any word in the anagram set, BUT of the wrong count (try thinking of words with more or less of this letter)
                         <br /><br />
                         Once you make a correct guess, come up with 2 anagrams for that word to win!
                         <br /><br />
