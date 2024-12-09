@@ -187,6 +187,10 @@ export const useWeldor = () => {
                     setTimeout(()=>{setShake(false)},1000)
                 }
             }
+            else if (guessedWordSet.includes(guessedWord.toUpperCase())) {
+                setShake(true)
+                setTimeout(()=>{setShake(false)},1000)
+            }
         } else if (/^[a-zA-Z]$/.test(key)) {
             if (guessedWord.length < 6) 
                 setGuessedWord((prev) => prev + key.toLowerCase())
