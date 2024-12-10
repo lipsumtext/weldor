@@ -37,6 +37,7 @@ function App() {
         <Keyboard weldorInstance={weldorInstance} />
         <p 
           style={{
+            margin: 0,
             paddingTop: '25px', 
             paddingBottom: '20px', 
             textAlign: 'center'
