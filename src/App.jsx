@@ -35,6 +35,16 @@ function App() {
         <NavBar setShowRules={setShowRules} setDarkMode={setDarkMode} darkMode={darkMode} />
         <WordGrid rulesModalActive={showRules} weldorInstance={weldorInstance}/>
         <Keyboard weldorInstance={weldorInstance} />
+        <p 
+          style={{
+            margin: 0,
+            paddingTop: '25px', 
+            paddingBottom: '20px', 
+            textAlign: 'center'
+          }}
+        >
+            Made with ♡ TLC ♡, by lipsumtext, 2024.
+        </p>
       </>
     )
 }
