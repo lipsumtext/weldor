@@ -3,7 +3,7 @@ import './NavBar.styles.css'
 export const NavBar = ({ setShowRules, setDarkMode, darkMode }) => {
     return (
         <nav className="navbar">
-            <h1 className='title'>Weldor</h1>
+            <h1 className='title' style={{letterSpacing: '0.125rem'}}>WELDOR</h1>
             <ul>
                 <li>
                     <button className='navbar-item' onClick={() => setShowRules(true)}>?</button>
