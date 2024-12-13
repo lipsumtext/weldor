@@ -43,7 +43,7 @@ function App() {
             textAlign: 'center'
           }}
         >
-            Made with ♡ TLC ♡, by lipsumtext, 2024.
+            Made with ♡ TLC ♡, by <a href="https://lipsumtext.pages.dev/" target="_blank" style={{color: 'white'}}>lipsumtext</a>, 2024.
         </p>
       </>
     )
