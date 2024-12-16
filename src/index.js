@@ -9,9 +9,9 @@ const checkIfWord = (word) => {
 // import anagram6 from './anagram_sets/6.json' with { type: "json" }
 // import anagram7 from './anagram_sets/7.json' with { type: "json" }
 
-const anagram5 = require('./anagram_sets/5.json')
-const anagram6 = require('./anagram_sets/6.json')
-const anagram7 = require('./anagram_sets/7.json')
+const anagram5 = require('./data/anagram_sets/5.json')
+const anagram6 = require('./data/anagram_sets/6.json')
+const anagram7 = require('./data/anagram_sets/7.json')
 
 const xorshift64 = (a) => {
     let x = a

@@ -1,6 +1,6 @@
-import anagram5 from '../anagram_sets/5.json'
-import anagram6 from '../anagram_sets/6.json'
-import anagram7 from '../anagram_sets/7.json'
+import anagram5 from '../data/anagram_sets/5.json'
+import anagram6 from '../data/anagram_sets/6.json'
+import anagram7 from '../data/anagram_sets/7.json'
 
 const xorshift64 = (a) => {
     let x = a
